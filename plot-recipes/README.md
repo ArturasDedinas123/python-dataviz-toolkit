@@ -92,7 +92,7 @@ Complete, working examples for 24+ different plot types using Python's most popu
 
 - All notebooks use Python 3.8+ compatible code
 - Required libraries: numpy, pandas, matplotlib, seaborn, plotly, scipy
-- Install requirements: `pip install -r requirements.txt`
+- Install requirements: `pip install -r ../requirements.txt` (from project root)
 - Random seeds are set for reproducible examples
 
 ## 📝 Contributing

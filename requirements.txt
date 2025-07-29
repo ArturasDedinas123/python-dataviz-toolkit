@@ -1,28 +1,29 @@
 # Core Data Science Libraries
-numpy>=1.24.3
-pandas>=2.0.3
-scipy>=1.11.1
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
 
 # Visualization Libraries
-matplotlib>=3.7.2
-seaborn>=0.12.2
-plotly>=5.17.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.0.0
 
 # Jupyter Environment
 jupyter>=1.0.0
-notebook>=7.0.3
-ipykernel>=6.25.0
+notebook>=6.4.0
+ipykernel>=6.0.0
 
 # Optional Enhancement Libraries
-plotly-dash>=2.14.0  # For web dashboards
-bokeh>=3.2.0        # Alternative interactive plotting
-altair>=5.0.0       # Grammar of graphics plotting
+dash>=2.10.0        # For web dashboards (replaces plotly-dash)
+bokeh>=2.4.0        # Alternative interactive plotting
+altair>=4.2.0       # Grammar of graphics plotting
 
-# Development and Quality
-black>=23.0.0       # Code formatting
-flake8>=6.0.0       # Linting
-isort>=5.12.0       # Import sorting
+# Additional Utilities
+pillow>=8.0.0       # Image processing
+requests>=2.25.0    # HTTP requests
 
-# Documentation
-sphinx>=7.0.0       # Documentation generation
-nbsphinx>=0.9.0     # Jupyter notebook documentation
+# Development and Quality (Optional)
+# Uncomment if you want development tools
+# black>=22.0.0       # Code formatting
+# flake8>=4.0.0       # Linting
+# isort>=5.10.0       # Import sorting

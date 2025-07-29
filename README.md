@@ -28,7 +28,7 @@ Complete, working examples for 24+ different visualization types:
 
 2. **Install dependencies:**
    ```bash
-   pip install -r plot-recipes/requirements.txt
+   pip install -r requirements.txt
    ```
 
 3. **Open in Jupyter:**
