@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-dataviz-toolkit"
+version = "1.0.0"
+description = "Complete Python data visualization toolkit with cheat sheets and plot recipes"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Python DataViz Toolkit"},
+]
+keywords = ["python", "data-visualization", "matplotlib", "seaborn", "plotly", "tutorial", "jupyter", "cheat-sheet"]
+
+dependencies = [
+    "numpy>=1.21.0",
+    "pandas>=1.3.0",
+    "scipy>=1.7.0",
+    "matplotlib>=3.5.0",
+    "seaborn>=0.11.0",
+    "plotly>=5.0.0",
+    "jupyter>=1.0.0",
+    "notebook>=6.4.0",
+    "ipykernel>=6.0.0",
+    "dash>=2.10.0",
+    "bokeh>=2.4.0",
+    "altair>=4.2.0",
+    "pillow>=8.0.0",
+    "requests>=2.25.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "isort>=5.10.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ArturasDedinas123/python-dataviz-toolkit"
+"Bug Reports" = "https://github.com/ArturasDedinas123/python-dataviz-toolkit/issues"
+"Source" = "https://github.com/ArturasDedinas123/python-dataviz-toolkit"
