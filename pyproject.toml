@@ -7,7 +7,7 @@ name = "python-dataviz-toolkit"
 version = "1.0.0"
 description = "Complete Python data visualization toolkit with cheat sheets and plot recipes"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.13"
 license = {text = "MIT"}
 authors = [
     {name = "Python DataViz Toolkit"},
