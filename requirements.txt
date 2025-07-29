@@ -8,6 +8,11 @@ matplotlib>=3.5.0
 seaborn>=0.11.0
 plotly>=5.0.0
 
+# Geographic/Map Libraries
+folium>=0.14.0      # Interactive maps
+geopandas>=0.12.0   # Geographic data analysis
+cartopy>=0.21.0     # Modern replacement for basemap
+
 # Jupyter Environment
 jupyter>=1.0.0
 notebook>=6.4.0
