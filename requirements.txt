@@ -10,6 +10,10 @@ seaborn>=0.11.0
 plotly>=5.0.0
 squarify>=0.4.3     # For treemap visualizations
 
+# Network Analysis Libraries
+networkx>=2.8.0     # Graph/network analysis and visualization
+python-louvain>=0.16.0  # Community detection algorithms
+
 # Geographic/Map Libraries
 folium>=0.14.0      # Interactive maps
 geopandas>=0.12.0   # Geographic data analysis
