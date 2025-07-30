@@ -8,6 +8,7 @@ scikit-learn>=1.0.0  # Machine learning algorithms
 matplotlib>=3.5.0
 seaborn>=0.11.0
 plotly>=5.0.0
+squarify>=0.4.3     # For treemap visualizations
 
 # Geographic/Map Libraries
 folium>=0.14.0      # Interactive maps
