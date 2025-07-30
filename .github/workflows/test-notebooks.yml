@@ -25,47 +25,25 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install nbconvert pytest jupyter
-        # Install additional optional dependencies for full functionality
-        pip install kaleido python-louvain geopandas folium cartopy || echo "Some optional packages failed to install"
+        pip install nbconvert pytest
     
     - name: Test notebook execution (Plot Recipes)
       run: |
         cd plot-recipes
-        failed_notebooks=""
         for notebook in *.ipynb; do
           if [ "$notebook" != "plot_recipes_index.ipynb" ]; then
             echo "Testing $notebook"
-            if ! timeout 300 jupyter nbconvert --to script --execute "$notebook" --stdout > /dev/null 2>&1; then
-              echo "❌ FAILED: $notebook"
-              failed_notebooks="$failed_notebooks $notebook"
-            else
-              echo "✅ PASSED: $notebook"
-            fi
+            jupyter nbconvert --to script --execute "$notebook" --stdout > /dev/null
           fi
         done
-        if [ -n "$failed_notebooks" ]; then
-          echo "Failed notebooks: $failed_notebooks"
-          exit 1
-        fi
     
     - name: Test notebook execution (Cheat Sheets)
       run: |
         cd cheat-sheets  
-        failed_notebooks=""
         for notebook in *.ipynb; do
           echo "Testing $notebook"
-          if ! timeout 300 jupyter nbconvert --to script --execute "$notebook" --stdout > /dev/null 2>&1; then
-            echo "❌ FAILED: $notebook"
-            failed_notebooks="$failed_notebooks $notebook"
-          else
-            echo "✅ PASSED: $notebook"
-          fi
+          jupyter nbconvert --to script --execute "$notebook" --stdout > /dev/null
         done
-        if [ -n "$failed_notebooks" ]; then
-          echo "Failed notebooks: $failed_notebooks"
-          exit 1
-        fi
     
     - name: Check for syntax errors
       run: |
@@ -79,43 +57,3 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=.venv,venv
         # Exit-zero treats all errors as warnings
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics --exclude=.venv,venv
-    
-    - name: Generate test report
-      if: always()  # Run even if previous steps failed
-      run: |
-        echo "## 📊 Notebook Test Report" > test-report.md
-        echo "Generated on: $(date)" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Count total notebooks
-        plot_count=$(ls plot-recipes/*.ipynb | grep -v plot_recipes_index.ipynb | wc -l)
-        cheat_count=$(ls cheat-sheets/*.ipynb | wc -l)
-        total_count=$((plot_count + cheat_count))
-        
-        echo "📈 **Total notebooks tested:** $total_count" >> test-report.md
-        echo "- Plot Recipes: $plot_count" >> test-report.md
-        echo "- Cheat Sheets: $cheat_count" >> test-report.md
-        echo "" >> test-report.md
-        
-        # List all notebooks
-        echo "### 📋 Notebook Inventory" >> test-report.md
-        echo "**Plot Recipes:**" >> test-report.md
-        for nb in plot-recipes/*.ipynb; do
-          if [[ "$nb" != *"plot_recipes_index.ipynb" ]]; then
-            echo "- $(basename "$nb")" >> test-report.md
-          fi
-        done
-        echo "" >> test-report.md
-        echo "**Cheat Sheets:**" >> test-report.md
-        for nb in cheat-sheets/*.ipynb; do
-          echo "- $(basename "$nb")" >> test-report.md
-        done
-        
-        cat test-report.md
-    
-    - name: Upload test report
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: notebook-test-report
-        path: test-report.md
