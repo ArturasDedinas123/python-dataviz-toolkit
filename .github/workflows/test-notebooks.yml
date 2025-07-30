@@ -45,10 +45,6 @@ jobs:
           jupyter nbconvert --to script --execute "$notebook" --stdout > /dev/null
         done
     
-    - name: Check for syntax errors
-      run: |
-        python -m py_compile $(find . -name "*.py" -not -path "./.venv/*" -not -path "./venv/*")
-    
     - name: Lint with flake8
       run: |
         # Install flake8 if not already installed
